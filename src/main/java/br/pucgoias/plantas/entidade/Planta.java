@@ -51,19 +51,19 @@ public class Planta implements Serializable{
 		this.idPlanta = idPlanta;
 	}
 
-	public String getpNome() {
+	public String getPNome() {
 		return pNome;
 	}
 
-	public void setpNome(String pNome) {
+	public void setPNome(String pNome) {
 		this.pNome = pNome;
 	}
 
-	public String getcNome() {
+	public String getCNome() {
 		return cNome;
 	}
 
-	public void setcNome(String cNome) {
+	public void setCNome(String cNome) {
 		this.cNome = cNome;
 	}
 
