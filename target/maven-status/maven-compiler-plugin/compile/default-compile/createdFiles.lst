@@ -1,0 +1,16 @@
+br/pucgoias/agenda/persistencia/GenericoDAO.class
+br/pucgoias/agenda/persistencia/GenericoDAOImpl.class
+br/pucgoias/agenda/config/AppConfig.class
+br/pucgoias/agenda/controle/PessoaBean.class
+br/pucgoias/agenda/UserBean.class
+br/pucgoias/agenda/controle/TelefoneBean.class
+br/pucgoias/agenda/persistencia/TelefoneDAOImpl.class
+br/pucgoias/agenda/negocio/PessoaService.class
+br/pucgoias/agenda/entidade/Pessoa.class
+br/pucgoias/agenda/util/AgendaException.class
+br/pucgoias/agenda/controle/PessoaController.class
+br/pucgoias/agenda/persistencia/TelefoneDAO.class
+br/pucgoias/agenda/persistencia/PessoaDAOImpl.class
+br/pucgoias/agenda/entidade/Telefone.class
+br/pucgoias/agenda/negocio/PessoaServiceImpl.class
+br/pucgoias/agenda/persistencia/PessoaDAO.class
