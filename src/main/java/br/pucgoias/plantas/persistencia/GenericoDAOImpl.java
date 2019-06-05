@@ -45,7 +45,7 @@ public class GenericoDAOImpl<T, ID extends Serializable> implements GenericoDAO<
 	 * Inclui um objeto T na base de dados
 	 * @param object
 	 * @return
-	 * @throws AgendaException
+	 * @throws PlantaException
 	 */
 	public T incluir(T object) throws PlantaException {
 		try{
@@ -62,7 +62,7 @@ public class GenericoDAOImpl<T, ID extends Serializable> implements GenericoDAO<
 	 * Altera um objeto T na base de dados
 	 * @param object
 	 * @return
-	 * @throws AgendaException
+	 * @throws PlantaException
 	 */
 	public T alterar(T object) throws PlantaException {
 		try{

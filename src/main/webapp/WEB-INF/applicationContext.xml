@@ -12,6 +12,6 @@
 
 
     <!-- Indica o pacote que sera rastreado pelas anotacoes -->
-    <context:component-scan base-package="br.pucgoias.agenda"/>
+    <context:component-scan base-package="br.pucgoias"/>
     
 </beans>

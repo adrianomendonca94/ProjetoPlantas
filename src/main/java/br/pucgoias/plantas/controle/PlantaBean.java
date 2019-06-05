@@ -37,7 +37,7 @@ public class PlantaBean {
 		
 		//Formata a data para padrao BR
 		DateTimeFormatter dtf = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withLocale(new Locale("pt", "br"));
-		setDataRegistro(dtf.format(planta.getDataRegistro().toLocalDate()));
+		setDataRegistro(dtf.format(planta.getDataRegistro().toInstant()));
 		
 	}
 	

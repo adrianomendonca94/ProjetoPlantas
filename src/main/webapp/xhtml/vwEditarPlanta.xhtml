@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<head>  
+		<link rel="StyleSheet" type="text/css" href="../../css/estilo.css"></link>  
+		<script language="javascript" src="../../js/editarPlanta.js" charset="ISO-8859-1"/>
+	</head>
+	<body>
+		<f:view>
+			<h:form id="formulario">
+				<h:graphicImage url="../../images/background_planta01.jpg"></h:graphicImage>
+				<br/>
+				<h:inputHidden value="#{plantaController.plantaBean.idPlanta}" />
+				<h:outputLabel value="Nome Científico:" /> <h:inputText id="nomeCientifico" value="#{plantaController.plantaBean.nomeCientifico}" size="50" maxlength="50"/>
+				<br/>
+				<h:outputLabel value="Nome Popular:" /> <h:inputText id="nomePopular" value="#{plantaController.plantaBean.nomePopular}" size="50" maxlength="50"/>
+				<br/>
+				<h:outputLabel value="Família:" /> <h:inputText id="familia" value="#{plantaController.plantaBean.familia}" size="50" maxlength="50"/>
+				<br/>
+				<h:outputLabel value="País de Origem:" /> <h:inputText id="paisOrigem" value="#{plantaController.plantaBean.paisOrigem}" size="50" maxlength="50"/>
+				<br/>
+				<h:outputLabel value="Data de Registro:" /> <h:inputText id="dataRegistro" value="#{plantaController.plantaBean.dataRegistro}"/>
+				<br/>
+						<f:facet name="header">
+							<h:outputLabel value="Operação" />
+						</f:facet>
+				<br/>
+				<h:commandButton styleClass="button" value="Salvar" action="#{plantaController.alterar}"  onclick="return validarFormulario();"/>
+				<h:commandButton styleClass="button" value="Excluir" action="#{plantaController.excluir}" />
+			</h:form>
+		</f:view>
+	</body>
+
+</html>

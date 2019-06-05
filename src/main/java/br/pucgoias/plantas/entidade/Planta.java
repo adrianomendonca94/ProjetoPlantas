@@ -1,7 +1,7 @@
 package br.pucgoias.plantas.entidade;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,14 +17,13 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="planta")
+@Table
 public class Planta implements Serializable{
 		
 	private static final long serialVersionUID = 6487849002108370775L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	@Column(name="idPlanta")
 	private Integer idPlanta;
 	

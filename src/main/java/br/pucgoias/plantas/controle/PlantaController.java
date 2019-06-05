@@ -1,22 +1,23 @@
 package br.pucgoias.plantas.controle;
 
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.component.html.HtmlDataTable;
 import javax.faces.component.html.HtmlInputHidden;
 import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import br.pucgoias.plantas.entidade.Pessoa;
 import br.pucgoias.plantas.entidade.Planta;
-import br.pucgoias.plantas.entidade.Telefone;
-import br.pucgoias.plantas.negocio.PessoaService;
 import br.pucgoias.plantas.negocio.PlantaService;
 import br.pucgoias.plantas.util.PlantaException;
 
@@ -57,11 +58,12 @@ public class PlantaController {
 			
 			//preenche os dados da tela no objeto persistente
 			planta.setIdPlanta(plantaBean.getIdPlanta());
-			planta.setcNome(plantaBean.getNomeCientifico());
-			planta.setpNome(plantaBean.getNomePopular());
+			planta.setCNome(plantaBean.getNomeCientifico());
+			planta.setPNome(plantaBean.getNomePopular());
 			planta.setFamilia(plantaBean.getFamilia());
 			planta.setPaisOrigem(plantaBean.getPaisOrigem());
-			planta.setDataRegistro(plantaBean.getDataRegistro());
+			DateTimeFormatter dtf = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withLocale(new Locale("pt", "br"));
+			planta.setDataRegistro(Date.from(Instant.from(dtf.parse(plantaBean.getDataRegistro()))));
 			
 			getPlantaService().incluir(planta);
 			return "sucesso";
@@ -91,14 +93,7 @@ public class PlantaController {
 			//preeche a lista de Plantas da tela
 			listaPlantaBean = new ArrayList<PlantaBean>();
 			for (Planta planta : listaPlanta) {
-				PlantaBean plantaBean = new PlantaBean();
-				plantaBean.setIdPlanta(planta.getIdPlanta());
-				plantaBean.setNomeCientifico(planta.getcNome());
-				plantaBean.setNomePopular(planta.getpNome());
-				plantaBean.setFamilia(planta.getFamilia());
-				plantaBean.setPaisOrigem(planta.getPaisOrigem());
-				plantaBean.setDataRegistro(planta.getDataRegistro());
-				
+				PlantaBean plantaBean = new PlantaBean(planta);	
 				listaPlantaBean.add(plantaBean);
 			}
 
@@ -213,24 +208,24 @@ public class PlantaController {
 			//preenche os dados da tela no objeto persistente
 			plantaBean = new PlantaBean(planta);
 
-			getPessoaService().alterar(pessoa);
+			getPlantaService().alterar(planta);
 			return "sucesso";
 			
 		}
 		catch (Exception e) {
-			String msg = "Alteracao nao realizada. Movito: " + ((e instanceof AgendaException ? ((AgendaException)e).getEx().getMessage():""));
+			String msg = "Alteracao nao realizada. Movito: " + ((e instanceof PlantaException ? ((PlantaException)e).getEx().getMessage():""));
 			FacesMessage message = new FacesMessage(msg);
 			this.getFacesContext().addMessage("formulario", message);
 			return "falha";
 		}
 	}
 	
-	public PessoaService getPessoaService() {
-		return pessoaService;
+	public PlantaService getPlantaService() {
+		return plantaService;
 	}
 
-	public void setPessoaService(PessoaService pessoaService) {
-		this.pessoaService = pessoaService;
+	public void setPlantaService(PlantaService plantaService) {
+		this.plantaService = plantaService;
 	}
 	
 	private FacesContext getFacesContext(){
@@ -245,28 +240,20 @@ public class PlantaController {
 		this.getFacesContext().getExternalContext().getSessionMap().put(variavel, objeto);
 	}
 	
-	public PessoaBean getPessoaBean() {
-		return pessoaBean;
+	public PlantaBean getPlantaBean() {
+		return plantaBean;
 	}
 
-	public void setPessoaBean(PessoaBean pessoaBean) {
-		this.pessoaBean = pessoaBean;
+	public void setPlantaBean(PlantaBean plantaBean) {
+		this.plantaBean = plantaBean;
 	}
 
-	public List<PessoaBean> getListaPessoaBean() {
-		return listaPessoaBean;
+	public List<PlantaBean> getListaPlantaBean() {
+		return listaPlantaBean;
 	}
 
-	public void setListaPessoaBean(List<PessoaBean> listaPessoaBean) {
-		this.listaPessoaBean = listaPessoaBean;
-	}
-
-	public TelefoneBean getTelefoneBean() {
-		return telefoneBean;
-	}
-
-	public void setTelefoneBean(TelefoneBean telefoneBean) {
-		this.telefoneBean = telefoneBean;
+	public void setListaPlantaBean(List<PlantaBean> listaPlantaBean) {
+		this.listaPlantaBean = listaPlantaBean;
 	}
 
 }
