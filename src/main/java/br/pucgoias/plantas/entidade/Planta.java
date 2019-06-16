@@ -41,6 +41,9 @@ public class Planta implements Serializable{
 	
 	@Column(name="dataRegistro")
 	private Date dataRegistro;
+	
+	@Column(name="valor")
+	private float valor;
 
 	public Integer getIdPlanta() {
 		return idPlanta;
@@ -90,6 +93,14 @@ public class Planta implements Serializable{
 		this.dataRegistro = dataRegistro;
 	}
 	
+	public float getValor() {
+		return valor;
+	}
+
+	public void setValor(float valor) {
+		this.valor = valor;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

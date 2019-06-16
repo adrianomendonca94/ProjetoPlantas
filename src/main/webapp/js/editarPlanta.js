@@ -9,8 +9,3 @@ function validarFormulario(){
 	return true;
 }
 
-
-//Funçao de validar DATA
-$(document).ready(function(){
-	  $('.date').mask('00/00/0000');
-});

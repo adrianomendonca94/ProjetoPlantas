@@ -15,8 +15,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScans(value = { @ComponentScan("br.pucgoias.plantas"),
-@ComponentScan("br.pucgoias.plantas") })
+@ComponentScans(value = { @ComponentScan("br.pucgoias"),
+@ComponentScan("br.pucgoias") })
 public class AppConfig {
 
    @Bean

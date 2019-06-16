@@ -6,12 +6,15 @@
 
 	<head>  
 		<link rel="StyleSheet" type="text/css" href="../../css/estilo.css"></link>  
+		
+		<script language="javascript" src="../../js/jquery-3.4.1.min.js" charset="ISO-8859-1"/>
+		<script language="javascript" src="../../js/jquery.mask.min.js" charset="ISO-8859-1"/>
 		<script language="javascript" src="../../js/criarPlanta.js" charset="ISO-8859-1"/>
 	</head>
 	<body>
 		<f:view>
 			<h:form id="formulario">
-				<h:graphicImage url="../../images/background_planta01.jpg"></h:graphicImage>
+				<h:graphicImage url="../../images/background_planta01.jpg" width="80%" height="10%"></h:graphicImage>
 				<br/>
 				<h:inputHidden value="#{plantaController.plantaBean.idPlanta}" />
 				<h:outputLabel value="Nome Científico:" /> <h:inputText id="nomeCientifico" value="#{plantaController.plantaBean.nomeCientifico}" size="50" maxlength="50"/>
@@ -22,7 +25,11 @@
 				<br/>
 				<h:outputLabel value="País de Origem:" /> <h:inputText id="paisOrigem" value="#{plantaController.plantaBean.paisOrigem}" size="50" maxlength="50"/>
 				<br/>
-				<h:outputLabel value="Data de Registro:" /> <h:inputText id="dataRegistro" value="#{plantaController.plantaBean.dataRegistro}"/>
+				<h:outputLabel value="Data de Registro:" /> <h:inputText id="dataRegistro" value="#{plantaController.plantaBean.dataRegistro}" styleClass="date" >
+				<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</h:inputText>
+				<br/>
+				<h:outputLabel value="Valor:" /> <h:inputText id="valor" value="#{plantaController.plantaBean.valor}"/>
 				<br/>
 				
 				<h:commandButton styleClass="button" value="Salvar" action="#{plantaController.incluir}" onclick="return validarFormulario();"/>

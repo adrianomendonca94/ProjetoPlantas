@@ -1,10 +1,11 @@
 package br.pucgoias.plantas.controle;
 
 import java.time.Instant;
+
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -62,8 +63,8 @@ public class PlantaController {
 			planta.setPNome(plantaBean.getNomePopular());
 			planta.setFamilia(plantaBean.getFamilia());
 			planta.setPaisOrigem(plantaBean.getPaisOrigem());
-			DateTimeFormatter dtf = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withLocale(new Locale("pt", "br"));
-			planta.setDataRegistro(Date.from(Instant.from(dtf.parse(plantaBean.getDataRegistro()))));
+			planta.setDataRegistro(plantaBean.getDataRegistro());
+			planta.setValor(plantaBean.getValor());
 			
 			getPlantaService().incluir(planta);
 			return "sucesso";
@@ -85,7 +86,7 @@ public class PlantaController {
 
 			List<Planta> listaPlanta = getPlantaService().listar();
 
-			if(listaPlanta==null || listaPlanta.size()==0){
+			if(listaPlanta == null || listaPlanta.size() == 0){
 				FacesMessage message = new FacesMessage("Nenhum registro encontrado.");
 				this.getFacesContext().addMessage("formulario", message);
 			}
@@ -109,7 +110,7 @@ public class PlantaController {
 }
 	
 	/**
-	 * Consulta uma pessoa cadastrada
+	 * Consulta uma planta cadastrada
 	 * @return
 	 */
 	

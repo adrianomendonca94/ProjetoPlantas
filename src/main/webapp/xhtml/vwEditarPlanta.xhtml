@@ -11,9 +11,9 @@
 	<body>
 		<f:view>
 			<h:form id="formulario">
-				<h:graphicImage url="../../images/background_planta01.jpg"></h:graphicImage>
+				<h:graphicImage url="../../images/background_planta01.jpg" width="80%" height="10%"></h:graphicImage>
 				<br/>
-				<h:inputHidden value="#{plantaController.plantaBean.idPlanta}" />
+				<h:inputHidden value="#{plantaController.plantaBean.idPlanta}" id="idPlanta" name="idPlanta" />
 				<h:outputLabel value="Nome Científico:" /> <h:inputText id="nomeCientifico" value="#{plantaController.plantaBean.nomeCientifico}" size="50" maxlength="50"/>
 				<br/>
 				<h:outputLabel value="Nome Popular:" /> <h:inputText id="nomePopular" value="#{plantaController.plantaBean.nomePopular}" size="50" maxlength="50"/>
@@ -22,13 +22,16 @@
 				<br/>
 				<h:outputLabel value="País de Origem:" /> <h:inputText id="paisOrigem" value="#{plantaController.plantaBean.paisOrigem}" size="50" maxlength="50"/>
 				<br/>
-				<h:outputLabel value="Data de Registro:" /> <h:inputText id="dataRegistro" value="#{plantaController.plantaBean.dataRegistro}"/>
+				<h:outputLabel value="Data de Registro:" /> <h:inputText id="dataRegistro" value="#{plantaController.plantaBean.dataRegistro}"> <f:convertDateTime pattern="dd/MM/yyyy"/></h:inputText>
+				<br/>
+				<h:outputLabel value="Valor:" /> <h:inputText id="valor" value="#{plantaController.plantaBean.valor}"/>
 				<br/>
 						<f:facet name="header">
 							<h:outputLabel value="Operação" />
 						</f:facet>
 				<br/>
 				<h:commandButton styleClass="button" value="Salvar" action="#{plantaController.alterar}"  onclick="return validarFormulario();"/>
+			<!--<h:commandButton styleClass="button" value="Limpar" action=""/>  -->	
 				<h:commandButton styleClass="button" value="Excluir" action="#{plantaController.excluir}" />
 			</h:form>
 		</f:view>

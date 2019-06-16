@@ -31,7 +31,7 @@ public class GenericoDAOImpl<T, ID extends Serializable> implements GenericoDAO<
 		return entityManager;
 	}
 
-	@PersistenceContext(unitName="planta")
+	@PersistenceContext(unitName="plantas")
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}

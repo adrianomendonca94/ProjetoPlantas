@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<head>
+<link rel="StyleSheet" type="text/css" href="../../css/estilo.css"></link>
+<script language="javascript" src="../../js/listarPlanta.js"
+	charset="ISO-8859-1" />
+</head>
+<body>
+	<f:view>
+	<h:graphicImage url="../../images/background_planta01.jpg"
+				width="80%" height="10%"/>
+		<h:form id="formulario">
+			
+			<input type="hidden" id="idPlanta" name="idPlanta" />
+			<br />
+			<h:dataTable border="1" styleClass="sample" id="plantas"
+				value="#{plantaController.listaPlantaBean}" var="planta">
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Nome Científico" />
+					</f:facet>
+					<h:inputHidden value="#{planta.idPlanta}" />
+					<h:outputLabel value="#{planta.nomeCientifico}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Nome Popular" />
+					</f:facet>
+					<h:inputHidden value="#{planta.idPlanta}" />
+					<h:outputLabel value="#{planta.nomePopular}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Família" />
+					</f:facet>
+					<h:inputHidden value="#{planta.idPlanta}" />
+					<h:outputLabel value="#{planta.familia}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="País de Origem" />
+					</f:facet>
+					<h:inputHidden value="#{planta.idPlanta}" />
+					<h:outputLabel value="#{planta.paisOrigem}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Data de Registro" />
+					</f:facet>
+					<h:inputHidden value="#{planta.idPlanta}" />
+					<h:outputLabel value="#{planta.dataRegistro}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Valor" />
+					</f:facet>
+					<h:inputHidden value="#{planta.idPlanta}" />
+					<h:outputLabel value="#{planta.valor}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Opção" />
+					</f:facet>
+					<h:message for="#{plantaController}" />
+					<h:selectOneRadio id="selecionado"
+						value="#{plantaController.plantaBean.idPlanta}"
+						onclick="selecionarItem('idPlanta',this);">
+						<f:selectItem itemValue="#{planta.idPlanta}" />
+					</h:selectOneRadio>
+				</h:column>
+			</h:dataTable>
+			<br />
+			<h:commandButton styleClass="button" value="Novo"
+				action="#{plantaController.criar}" />
+			<h:commandButton styleClass="button" value="Editar"
+				action="#{plantaController.consultar}"
+				onclick="return validarSelecionado()" />
+			<h:messages />
+		</h:form>
+	</f:view>
+</body>
+
+</html>
